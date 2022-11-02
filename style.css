@@ -1,0 +1,61 @@
+h1{
+    text-align: center;
+}
+
+.main-container{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.square{
+    width: 80px;
+    height: 80px;
+    border: none;
+    background-color: #787c73;
+    outline: none;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+
+.result{
+    text-align: center;
+    font-size: 32px;
+}
+
+.button{
+    width: 130px;
+    height: 80px;
+    border-radius: 16px;
+    border: none;
+    background-color: green;
+    font-size: 31px;
+    color: white;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+/* CODIGO DE COLORES PARA VER SI ESTA: ACERTADO EN LUGAR Y POSICION. SOLO ACERTADO. O NINGUNO  */
+
+.green{
+    background-color: rgb(12, 153, 12);
+}
+
+.gold{
+    background-color: rgb(214, 190, 50);
+}
+
+.gray{
+    background-color: rgb(145, 141, 141);
+}
