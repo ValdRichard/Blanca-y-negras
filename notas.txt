@@ -1,0 +1,15 @@
+cosas a hacer: 
+
+- que no pueda enviar mas numeros
+
+- que sea por turnos
+
+- hacer una tabla con la cantidad de blancas y negras
+
+luego de hacer eso:
+
+- hacer un login capaz
+
+- mejorar lo visual (esto se encarga mi equipo)
+
+- hacer un layout?
