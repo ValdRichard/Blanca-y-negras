@@ -6,6 +6,7 @@ let jugadores;
 
 let yo = document.querySelector("#yo");
 let rival = document.querySelector("#oponente");
+let alerta = document.querySelector("#alerta");
 
 let send = document.querySelector(".send");
 let resultElement = document.querySelector(".result");
@@ -14,6 +15,26 @@ let salida = document.getElementById("salida");
 let enviarMsj = document.getElementById("btnEnviar");
 
 let tabla = document.getElementById("tabla");
+
+function enterClick(input, button){
+  document.getElementById(input)
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById(button).click();
+    }
+});
+}
+
+
+enterClick("Mensaje", "btnEnviar")
+enterClick("input4", "enviarNumero2")
+enterClick("nu4", "enviarNumero")
+
+
+function hasDuplicates(array) {
+  return (new Set(array)).size !== array.length;
+}
 
 function resultado(data) {
   console.log(data);
@@ -33,60 +54,72 @@ function resultado(data) {
     //Se almacena el ingreso del usuario
     let squaresFilled = document.querySelectorAll(".numero");
     squaresFilled = [...squaresFilled];
-
-    let finalUserInput = [];
-
+    
+    let comparacion = [];
+    
     squaresFilled.forEach((element) => {
-      finalUserInput.push(element.value);
-    });
+      comparacion.push(element.value);
+    }); 
 
-    let existIndexArray = existLetter(data, finalUserInput);
+    console.log(hasDuplicates(comparacion))
 
-    existIndexArray.forEach((element) => {
-      squares[element].classList.add("gold");
-    });
+    if (!hasDuplicates(comparacion)) {
+      let finalUserInput = [];
+      squaresFilled.forEach((element) => {
+        finalUserInput.push(element.value);
+      });
 
-    // COMPARAR ARRAY'S PARA CAMBIAR EL ESTILO
-    let rightIndex = compareArrays(data, finalUserInput);
-    rightIndex.forEach((element) => {
-      if (squares[element].classList.contains("gold")) {
-        squares[element].classList.remove("gold");
-        squares[element].classList.add("green");
+      let existIndexArray = existLetter(data, finalUserInput);
+
+      existIndexArray.forEach((element) => {
+        squares[element].classList.add("gold");
+      });
+
+      // COMPARAR ARRAY'S PARA CAMBIAR EL ESTILO
+      let rightIndex = compareArrays(data, finalUserInput);
+      rightIndex.forEach((element) => {
+        if (squares[element].classList.contains("gold")) {
+          squares[element].classList.remove("gold");
+          squares[element].classList.add("green");
+        }
+      });
+      negras = document.querySelectorAll(".gold").length;
+      blancas = document.querySelectorAll(".green").length;
+      if (rightIndex.length == data.length) {
+        registro(negras, blancas, finalUserInput);
+
+        blancas = 0;
+        negras = 0;
+
+        socket.emit("perdio", {
+          sala: sala,
+        });
+
+        alert("Ganaste!!!");
+        location.href = "/";
+      } else {
+        socket.emit("turno", {
+          sala: sala,
+        });
+
+        registro(negras, blancas, finalUserInput);
+
+        blancas = 0;
+        negras = 0;
+
+        send.disabled = true;
       }
-    });
-    negras = document.querySelectorAll(".gold").length;
-    blancas = document.querySelectorAll(".green").length;
-    if (rightIndex.length == data.length) {
-      registro(negras, blancas, finalUserInput);
-
-      blancas = 0;
-      negras = 0;
-
-      socket.emit("perdio", {
-        sala: sala,
+      squares = document.querySelectorAll(".numero");
+      squares.forEach((element) => {
+        element.value = "";
+        element.classList.remove("gold");
+        element.classList.remove("green");
+        element.disabled = true;
       });
-
-      alert("ganaste");
-      location.href = "/";
-    } else {
-      socket.emit("turno", {
-        sala: sala,
-      });
-
-      registro(negras, blancas, finalUserInput);
-
-      blancas = 0;
-      negras = 0;
-
-      send.disabled = true;
     }
-    squares = document.querySelectorAll(".numero");
-    squares.forEach((element) => {
-      element.value = "";
-      element.classList.remove("gold");
-      element.classList.remove("green");
-      element.disabled = true;
-    });
+    else {
+      toastr['error']('No repita los numeros');
+    }
   });
 }
 
@@ -141,18 +174,28 @@ let n = document.querySelectorAll(".numero");
 let adivinar = [];
 
 enviar.addEventListener("click", (e) => {
+  let comp = []
+  
   numero.forEach((element) => {
-    console.log(element);
-    element.disabled = true;
-    adivinar.push(element.value);
+    comp.push(element.value);
   });
 
-  socket.emit("numero", {
-    numero: adivinar.join("-"),
-    array: adivinar,
-    sala: sala,
-  });
-  enviar.disabled = true;
+  if (!hasDuplicates(comp)){
+    numero.forEach((element) => {
+      element.disabled = true;
+      adivinar.push(element.value);
+    });
+  
+    socket.emit("numero", {
+      numero: adivinar.join("-"),
+      array: adivinar,
+      sala: sala,
+    });
+  }
+  else{
+    toastr['error']('No repita los numeros');
+  }
+  
 });
 
 let mensaje = document.getElementById("Mensaje");
@@ -209,7 +252,7 @@ socket.on("run", (data) => {
 });
 
 socket.on("respuesta", (data) => {
-  alert("ya ingreso su numero el jugador");
+  toastr['success']("El rival envio el numero, le toca a usted")
   resultado(data.array);
   n.forEach((element) => {
     element.disabled = false;
@@ -217,14 +260,15 @@ socket.on("respuesta", (data) => {
 });
 
 socket.on("lost", () => {
-  alert("oh no, perdiste");
-  setTimeout(() => {
-    location.href = "/";
-  }, 2000);
+  alert("OH NO!, HAS PERDIDO");
+  setTimeout(() =>
+  {
+    location.href = "/"
+  }, 2000)
 });
 
 socket.on("turno", () => {
-  alert("Es tu turno");
+  toastr['warning']("Es tu turno")
   n.forEach((element) => {
     element.disabled = false;
   });
