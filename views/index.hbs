@@ -1,63 +1,100 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        
-        <title>Blancas y negras</title>
-        
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">        <title>Prueba</title>
-        
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
-    <body>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12">
-                    <div id="action">
+<html lang="en">
 
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div id="salida">
-                    
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="input-group">
-                        <label class="input-group-text">usuario</label>
-                        <input class="form-control" type="text" id="usuario" placeholder="Nombre de usuario">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="input-group">
-                        <label class="input-group-text">mensaje</label>
-                        <input class="form-control" type="number" maxlength="4" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)" id="numero" placeholder="Ingrese un numero">
-                    </div>
-                </div>
-                <div class="col-6 mt-2">
-                    <button class="form-control" id="send">Send</button>
-                </div>
-                <div class= "entrada col-12 d-flex justify-content-center mt-2 ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
 
-                </div>
-            </div>
-            <div class="result">
-            
-            </div>
-            <table class="table table-dark table-striped-columns" id="tabla">
-                <tr>
-                    <td>Negras</td>
-                    <td>Blancas</td>
-                </tr>
-                <tr>
-                    <td id="negras">..</td>
-                    <td id="blancas">..</td>
-                </tr>
-            </table>    
-        </div>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- PARTE DE FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap"
+      rel="stylesheet"
+    />
 
-        <script src="/socket.io/socket.io.js"></script>
+    <!-- BARLOW -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
-        <script src="./js/chat.js"></script>
-    </body>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container-title-black text-center mt-5">
+      <span class="title-black">B</span>
+      <span class="title-black">L</span>
+      <span class="title-black">A</span>
+      <span class="title-black">N</span>
+      <span class="title-black">C</span>
+      <span class="title-black">A</span>
+      <span class="title-black">S</span>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+
+      <div class="linea-1">
+
+      </div>
+
+      <div class="linea-2 ms-2">
+
+      </div>
+
+    </div>
+
+    <div class="container-title-white text-center mt-5">
+      <span class="title-white">N</span>
+      <span class="title-white">E</span>
+      <span class="title-white">G</span>
+      <span class="title-white">R</span>
+      <span class="title-white">A</span>
+      <span class="title-white">S</span>
+    </div>
+
+    <div class="cuadrado-sala container text-center">
+      <div class="cuadro-sala pt-4 mb-1">
+        <h2>Salas</h2>
+        <h5 class="linea-3">Unirse a sala existente</h5>
+        <label for="nombre">Game tag: </label>
+        <input type="text" class="nombre" />
+        <label for="nombre">Nombre de sala: </label>
+        <input type="text" id="unirseSala" />
+      </div>
+      <button class="btn btn-primary" id="unirse">Unirse</button>
+      <div class="cuadro-sala pt-4 mb-4">
+        <h5 class="linea-3">Crear nueva sala</h5>
+        <label for="nombre">Nombre de sala: </label>
+        <input type="text" id="crearSala" />
+      </div>
+      <button class="btn btn-primary" id="crear">Crear</button>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="./js/sala.js"></script>
+  </body>
 </html>

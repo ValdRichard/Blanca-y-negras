@@ -1,64 +1,344 @@
-h1{
-    text-align: center;
+html,
+body {
+  background-color: #669ed1;
+  font-family: "Inter", sans-serif;
+  margin: 0;
 }
 
-.main-container{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* .container-title-white, .container-title-black{
+  margin: 0 auto;
+} */
+
+.title-black {
+  color: #fff;
+  background: rgb(0, 0, 0);
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  margin: 0 2px;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-font-smoothing: antialiased;
 }
 
-
-
-.square{
-    width: 80px;
-    height: 80px;
-    border: white 1px solid;
-    background-color: #787c73;
-    outline: none;
-    font-size: 50px;
-    color: white;
-    text-align: center;
-
+.linea-1 {
+  width: 130px;
+  height: 4px;
+  background-color: #fff;
 }
 
-.result{
-    text-align: center;
-    font-size: 32px;
+.linea-2 {
+  width: 130px;
+  height: 4px;
+  background-color: rgb(0, 0, 0);
 }
 
-.button{
-    width: 130px;
-    height: 80px;
-    border-radius: 16px;
-    border: none;
-    background-color: green;
-    font-size: 31px;
-    color: white;
+.title-white {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  margin: 0 2px;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-font-smoothing: antialiased;
 }
 
-.button:hover{
-    cursor: pointer;
+.cuadro:not(cuadro-sala) {
+  width: 300px;
+  height: 125px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 100px auto;
+}
+
+input[type="text"] {
+  width: 140px;
+  height: 20px;
+  margin-left: 15px;
+}
+
+.btn-primary {
+  background-color: #3d4166;
+  border-color: #3d4166;
+}
+
+.btn-primary:hover {
+  background-color: #34364b;
+}
+
+.btn-primary:active {
+  background-color: #3d4166;
+}
+
+.cuadrado-sala {
+  background-color: #fff;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.cuadro-sala {
+  width: 300px;
+  border-radius: 15px;
+  margin: 60px auto;
+  color: #000;
+}
+
+.cuadrado-sala h2 {
+  font-size: 40px;
+}
+
+.linea-3 {
+  border-top: 2px solid #000;
+  padding-top: 30px;
+}
+
+.cuadro-sala input {
+  margin-top: 34px;
+}
+
+.cuadrado-sala .btn-primary {
+  background-color: #3d4166;
+  border-color: #3d4166;
+  width: 133px;
+  margin-top: 30px;
+  font-size: 19px;
+}
+
+.cuadro-juego h2 {
+  margin-top: 20px;
+  font-size: 23px;
+  color: #ffffff;
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+}
+
+.cuadro-juego {
+  margin-left: 50px;
+}
+
+.container2 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  margin-top: 20px;
+}
+
+.container2 .square {
+  width: 65px;
+  height: 65px;
+  background-color: #ffffff;
+  outline: none;
+  font-size: 50px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10%;
+  border-color: rgb(62, 62, 62);
+}
+
+.cuadro-juego .btn-primary {
+  margin-top: 40px;
+  margin-left: 305px;
+  width: 120px;
+  height: 35px;
+  background-color: #fff;
+  color: #3e3e3e;
+}
+
+.container3 {
+  color: #fff;
+  position: absolute;
+  left: 78%;
+  margin-top: 30px;
+}
+
+.cuadro-labels {
+  margin-right: 50px;
+  font-size: 33px;
+}
+
+.cuadro-labels h5 {
+  font-size: 27px;
+  margin-left: 44px;
+  margin-top: 10px;
+}
+
+.cuadro-labels label:last-child {
+  margin-left: 100px;
+  margin-top: 2px;
+}
+
+.container4 {
+  color: #fff;
+  position: absolute;
+  left: 69%;
+  top: 20%;
+  margin-top: 28px;
+}
+
+.container4 h2 {
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+.container4 button {
+  margin-left: 50px;
+}
+
+.container4 .square {
+  width: 38px;
+  height: 38px;
+  background-color: #ffffff;
+  outline: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: rgb(62, 62, 62);
+  text-align: center;
+  border-radius: 30%;
+  border: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.container4 .row {
+  gap: 5px;
+}
+
+.container5 .table {
+  position: absolute;
+  top: 45%;
+  width: 31%;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 58px;
+  border-color: #000;
+  background-color: #fff;
+}
+
+.container5 .table tr {
+  border: none;
+}
+
+.container5 .table thead tr {
+  border: 1px solid black;
+}
+
+.container5 .table tr:last-child {
+  border-bottom: 1px solid black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.main-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  border: white 1px solid;
+  background-color: #787c73;
+  outline: none;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+.result {
+  text-align: center;
+  font-size: 32px;
+}
+
+.button {
+  width: 130px;
+  height: 80px;
+  border-radius: 16px;
+  border: none;
+  background-color: green;
+  font-size: 31px;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 /* Web kit */
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-input[type=number] { -moz-appearance:textfield; }
-
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 /* CODIGO DE COLORES PARA VER SI ESTA: ACERTADO EN LUGAR Y POSICION. SOLO ACERTADO. O NINGUNO  */
 
-.gray{
-    background-color: rgb(145, 141, 141);
+.gray {
+  background-color: rgb(145, 141, 141);
 }
 
-.table{
-    border: rgb(137, 151, 162) 4px solid
+.tabla {
+  margin: 340px 0px 0px 770px;
+}
+
+.card-body {
+  margin-left: 15px;
+  overflow-y: scroll;
+  height: 300px;
+  margin: 20px 0px;
+}
+
+#mensaje {
+  padding: 15px;
+}
+
+.msj {
+  background-color: rgba(30, 76, 109, 0.471);
+  padding: 5px;
+  color: white;
+  margin-top: 10px;
+}
+
+.msj p {
+  margin: 1px;
+}
+.msj h4 {
+  margin-left: 10px;
+}
+
+.btn-warning {
+  padding: 0px;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
 }
