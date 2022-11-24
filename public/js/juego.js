@@ -152,6 +152,7 @@ enviar.addEventListener("click", (e) => {
     array: adivinar,
     sala: sala,
   });
+  enviar.disabled = true;
 });
 
 let mensaje = document.getElementById("Mensaje");
@@ -217,6 +218,9 @@ socket.on("respuesta", (data) => {
 
 socket.on("lost", () => {
   alert("oh no, perdiste");
+  setTimeout(() => {
+    location.href = "/";
+  }, 2000);
 });
 
 socket.on("turno", () => {

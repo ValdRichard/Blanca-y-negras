@@ -17,6 +17,12 @@
       crossorigin="anonymous"
     ></script>
 
+    <link
+      rel="shortcut icon"
+      href="https://www.benwhite.com/wp-content/uploads/B-favicon.png"
+      type="image/x-icon"
+    />
+
     <link rel="stylesheet" href="./css/style.css" />
     <!-- PARTE DE FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +40,7 @@
       rel="stylesheet"
     />
 
-    <title>Document</title>
+    <title>B&N</title>
   </head>
 
   <body>
@@ -72,14 +78,14 @@
     <div class="cuadrado-sala container text-center">
       <div class="cuadro-sala pt-4 mb-1">
         <h2>Salas</h2>
+        <label for="nombre">Game tag:</label>
+        <input type="text" class="nombre mb-5" />
         <h5 class="linea-3">Unirse a sala existente</h5>
-        <label for="nombre">Game tag: </label>
-        <input type="text" class="nombre" />
         <label for="nombre">Nombre de sala: </label>
         <input type="text" id="unirseSala" />
       </div>
       <button class="btn btn-primary" id="unirse">Unirse</button>
-      <div class="cuadro-sala pt-4 mb-4">
+      <div class="cuadro-sala mb-4">
         <h5 class="linea-3">Crear nueva sala</h5>
         <label for="nombre">Nombre de sala: </label>
         <input type="text" id="crearSala" />
